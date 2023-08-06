@@ -1,27 +1,84 @@
 const mongoose = require('mongoose');
 const User = require('./user');
 
-mongoose.connect('mongodb+srv://elifery06:hasnur_2009@cluster0.wzgyiqc.mongodb.net/', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-  .then(() => {
-    console.log('MongoDB\'ye başarıyla bağlandı');
+read();
+async function read() {
 
-    // Tüm kullanıcıları getir
-    User.find()
-      .then((kullanicilar) => {
-        console.log('Veritabanındaki tüm kullanıcılar:');
-        kullanicilar.forEach((kullanici) => {
-          console.log(kullanici);
-        });
-        mongoose.disconnect();
-      })
-      .catch((err) => {
-        console.error('Kullanıcıları getirme hatası:', err);
-        mongoose.disconnect();
-      });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  mongoose.connect('mongodb+srv://elifery06:hasnur_2009@cluster0.wzgyiqc.mongodb.net/', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
   })
-  .catch((err) => {
-    console.error('MongoDB bağlantı hatası:', err);
+
+
+
+
+  var user = await User.findOne({
+    _id: "64cb60278f940b932e879643"
   });
+
+  console.log(user);
+
+  user.ad = "Elif"
+
+  console.log(user);
+
+  await User.findOneAndUpdate({ "_id": user._id }, user)
+
+
+  await User.deleteOne({ "_id": user._id })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
